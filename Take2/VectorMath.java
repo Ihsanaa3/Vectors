@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 public class VectorMath { 
     public static double[] vectorAdd(MyVectors a, MyVectors b){
-        double[] result = {a.coordinates[0]+b.coordinates[0], a.coordinates[1]+ b.coordinates[1]}; 
+        double[] result = {a.coordinates[0] + b.coordinates[0], a.coordinates[1] + b.coordinates[1]}; 
+        return result; 
+    }
+    public static double[] vectorSUB(MyVectors a, MyVectors b){
+        double[] result = {a.coordinates[0] - b.coordinates[0], a.coordinates[1] - b.coordinates[1]}; 
         return result; 
     }
     public static void main(String[] args) {
