@@ -1,6 +1,7 @@
 package Take2;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
+import java.math.*;
 
 public class VectorMath { 
 
@@ -33,7 +34,22 @@ public class VectorMath {
         }
         return result; 
     } 
-
+    public static double[] vectorCross3(MyVectors a, MyVectors b){
+        if (!isSameSize(a, b)) {
+            System.out.println("Size Error: Vectors must be the same size for cross product.");
+            return null;  
+        }
+        if(a.size != 3 || b.size != 3){
+            System.out.println("Size Error: Vectors must be the same size of dimension 3 for cross product.");
+            return null;  
+        }
+        double[] result = {
+            (a.coordinates[1] * b.coordinates[2]) - (a.coordinates[2] * b.coordinates[1]), // x
+            (a.coordinates[2] * b.coordinates[0]) - (a.coordinates[0] * b.coordinates[2]), // y
+            (a.coordinates[0] * b.coordinates[1]) - (a.coordinates[1] * b.coordinates[0])  // z
+        }; 
+        return result; 
+    }
     public static Double vectorDOT(MyVectors a, MyVectors b) {
         if (!isSameSize(a, b)) {
             System.out.println("Size Error: Vectors must be the same size for dot product.");
@@ -46,6 +62,23 @@ public class VectorMath {
         }
         return result; 
     } 
+    public static Double vectorDistance(MyVectors a, MyVectors b){
+        if (!isSameSize(a, b)) {
+            System.out.println("Size Error: Vectors must be the same size to calculate length.");
+            return null;  
+        }
+        double[] vector = new double[a.size]; 
+        Double squareSum = 0.0;
+        for (int i = 0; i < a.size; i++) {
+            vector[i] += Math.pow(a.coordinates[i] - b.coordinates[i], 2);
+        } 
+        for(double v: vector){
+            squareSum += v; 
+        }
+        Double result = Math.sqrt(squareSum); 
+        return result; 
+    }
+
 
     public static void main(String[] args) {
         ArrayList<MyVectors> myData = new ArrayList<>(); 
